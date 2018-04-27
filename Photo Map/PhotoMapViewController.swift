@@ -65,20 +65,9 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         // Dispose of any resources that can be recreated.
     }
     
-    func locationsPickedLocation(controller: LocationsViewController, latitude: NSNumber, longitude: NSNumber, locationName: String) {
-        
-
-        self.navigationController?.popViewController(animated: true)
-        
-   
-        let locationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude), CLLocationDegrees(longitude));
-        
-        let annotation = PhotoAnnotation();
-        annotation.coordinate = locationCoordinate2D
-        
-        annotations.append(annotation)
-        mapView.addAnnotations(annotations);
-    }
+    
+    
+    
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reuseID = "myAnnotationView"
@@ -109,6 +98,23 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         
         return annotationView
     }
+    
+    func locationsPickedLocation(controller: LocationsViewController, latitude: NSNumber, longitude: NSNumber, locationName: String) {
+        
+
+        self.navigationController?.popViewController(animated: true)
+        
+   
+        let locationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitude), CLLocationDegrees(longitude));
+        
+        let annotation = PhotoAnnotation();
+        annotation.coordinate = locationCoordinate2D
+        
+        annotations.append(annotation)
+        mapView.addAnnotations(annotations);
+    }
+    
+
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
